@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.priyanshumaurya8868.newsapp.api.entity.Article
 import com.bumptech.glide.Glide
 import com.priyanshumaurya8868.newsapp.databinding.ItemArticlePreviewBinding
+import com.priyanshumaurya8868.newsapp.util.loadImage
+import com.priyanshumaurya8868.newsapp.util.timeStamp
 
 
 class FeedAdapter : RecyclerView.Adapter<FeedAdapter.NewsVH>() {
@@ -30,11 +32,11 @@ class FeedAdapter : RecyclerView.Adapter<FeedAdapter.NewsVH>() {
     override fun onBindViewHolder(holder: NewsVH, position: Int) {
         val article = differ.currentList.get(position)
         holder.binding.apply {
-            Glide.with(this.root).load(article.urlToImage).into(ivArticleImage)
+            article.urlToImage?.let { ivArticleImage.loadImage(it) }
             tvSource.text =article.description
             tvTitle.text = article.title
             tvDescription.text = article.source?.name
-            tvPublishedAt.text = article.publishedAt
+            tvPublishedAt.text = article.publishedAt.toString()
 
             root.setOnClickListener {
 

@@ -95,7 +95,7 @@ class BreakingNewsFragment : Fragment() {
             val isNotLoadingAndIsNotLastPage = !isLoading && !isLastPage
             val isAtLastItem = firstVisibleItemPosition + visibleItemCount >= totalItemCount
             val isNotBeginning = firstVisibleItemPosition >=0
-            val isTotalMoreThanVisible = totalItemCount >= Constants.PAGE_SIZE
+            val isTotalMoreThanVisible = totalItemCount >= PAGE_SIZE
 
             val shouldWePaginate = isNotLoadingAndIsNotLastPage && isNotBeginning && isAtLastItem && isTotalMoreThanVisible
             if (shouldWePaginate){
